@@ -31,5 +31,4 @@ if [ "${1}" == "slave" ]; then
     sed -i "s|.*max_wal_senders.*|max_wal_senders = 10|g" ${PGSQL_DATA}postgresql.conf;
     sed -i "s|.*archive_mode.*|archive_mode = on|g" ${PGSQL_DATA}postgresql.conf;
     sed -i "s|.*archive_command.*| archive_command = 'cd .'|g" ${PGSQL_DATA}postgresql.conf;
-    sudo /etc/init.d/postgresql-12 start
 fi
