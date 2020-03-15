@@ -27,7 +27,7 @@ if [ "${1}" == "slave" ]; then
     sed -i "1i host replication  replication       ${MASTER_IP}/32    trust" ${PGSQL_DATA}pg_hba.conf;
     sed -i "s|.*hot_standby.*|hot_standby = on|g" ${PGSQL_DATA}postgresql.conf;
     sed -i "153 a wal_level = hot_standby" ${PGSQL_DATA}postgresql.conf;
-    sed -i "s|.*max_wal_senders.*|max_wal_senders = 1|g" ${PGSQL_DATA}postgresql.conf;
+    sed -i "s|.*max_wal_senders.*|max_wal_senders = 8|g" ${PGSQL_DATA}postgresql.conf;
     sed -i "s|.*archive_mode.*|archive_mode = on|g" ${PGSQL_DATA}postgresql.conf;
     sed -i "s|.*archive_command.*| archive_command = 'cd .'|g" ${PGSQL_DATA}postgresql.conf;
     sudo /etc/init.d/postgresql-12 start
