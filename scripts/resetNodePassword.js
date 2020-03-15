@@ -16,7 +16,7 @@ nNodesLength = oEnvNodes.length;
 
 for (i = 0; i < nNodesLength; i += 1) {
     oResp = oEnvService.resetNodePasswordById({
-        nodeType: 'postgres9',
+        nodeType: 'postgres12',
         password: sNewPassword,
         nodeId: oEnvNodes[i].id
     });
