@@ -38,12 +38,10 @@ actions:
       ${nodes.sqldb.password} ${nodes.sqldb[0].address} 1>> /var/lib/pgsql/log.log 2>>/var/lib/pgsql/log.log
   - cmd [${nodes.sqldb[1].id}]: bash -x /var/lib/pgsql/script.sh slave ${nodes.sqldb[1].address}
       ${nodes.sqldb.password} ${nodes.sqldb[0].address} 1>> /var/lib/pgsql/log.log 2>>/var/lib/pgsql/log.log
-  restartContainers:
+  - restartContainers:
     - nodeId: nodes.sqldb[0]
-      nodeType: postgres12
-  restartContainers:
+  - restartContainers:
     - nodeId: nodes.sqldb[1]
-      nodeType: postgres12
 success: |-
   Admin credentials for created database servers have been sent to your email.
   Before accessing, please wait a minute for the required replication configurations to be applied. <br><br />
