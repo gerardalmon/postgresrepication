@@ -29,6 +29,8 @@ onBeforeResetNodePassword[nodeGroup:sqldb]:
 
 onInstall: ConfigReplication
 
+onAfterRedeployContainer: ConfigReplication
+
 actions:
   resetingNodePassword:
     script: /scripts/resetNodePassword.js
