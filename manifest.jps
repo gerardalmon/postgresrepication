@@ -27,7 +27,12 @@ onBeforeResetNodePassword[nodeGroup:sqldb]:
   - resetingNodePassword
   - stopEvent
 
-onInstall: ConfigReplication
+onInstall: 
+  - ConfigReplication
+  - restartContainers:
+    - nodeId: nodes.sqldb[0].id
+  - restartContainers:
+    - nodeId: nodes.sqldb[1].id
 
 actions:
   resetingNodePassword:
@@ -38,10 +43,7 @@ actions:
       ${nodes.sqldb.password} ${nodes.sqldb[0].address} 1>> /var/lib/pgsql/log.log 2>>/var/lib/pgsql/log.log
   - cmd [${nodes.sqldb[1].id}]: bash -x /var/lib/pgsql/script.sh slave ${nodes.sqldb[1].address}
       ${nodes.sqldb.password} ${nodes.sqldb[0].address} 1>> /var/lib/pgsql/log.log 2>>/var/lib/pgsql/log.log
-  - restartContainers:
-    - nodeId: nodes.sqldb[0].id
-  - restartContainers:
-    - nodeId: nodes.sqldb[1].id
+
 success: |-
   Admin credentials for created database servers have been sent to your email.
   Before accessing, please wait a minute for the required replication configurations to be applied. <br><br />
