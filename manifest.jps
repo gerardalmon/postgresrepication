@@ -21,7 +21,7 @@ engine: java7
 nodes:
   cloudlets: 8
   count: 2
-  nodeType: postgres
+  nodeType: postgres12
 
 onBeforeResetNodePassword[nodeGroup:sqldb]:
   - resetingNodePassword
@@ -48,7 +48,7 @@ success: |-
   Admin credentials for created database servers have been sent to your email.
   Before accessing, please wait a minute for the required replication configurations to be applied. <br><br />
   <table style='font-size:13px; border: none;'>
-  <tr><td>Master admin panel URL:</td><td style='padding-left: 10px;'><a href='${nodes.postgres.url}' target='_blank'>${nodes.postgres.url}/</a></td></tr>
+  <tr><td>Master admin panel URL:</td><td style='padding-left: 10px;'><a href='${nodes.postgres12.url}' target='_blank'>${nodes.postgres12.url}/</a></td></tr>
   <tr><td>Admin name:</td><td style='padding-left: 10px;'>webadmin</td></tr>
-  <tr><td>Password:</td><td style='padding-left: 10px;'>${nodes.postgres.password}</td></tr>
+  <tr><td>Password:</td><td style='padding-left: 10px;'>${nodes.postgres12.password}</td></tr>
   </table>
