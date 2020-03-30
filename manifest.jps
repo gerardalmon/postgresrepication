@@ -23,7 +23,7 @@ nodes:
   count: 2
   nodeType: postgres12
   env:
-    JELASTIC_PORTS: 5432
+    JELASTIC_PORTS: 10050
 
 onBeforeResetNodePassword[nodeGroup:sqldb]:
   - resetingNodePassword
