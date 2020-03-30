@@ -22,6 +22,8 @@ nodes:
   cloudlets: 8
   count: 2
   nodeType: postgres12
+  env:
+    JELASTIC_PORTS: 5432
 
 onBeforeResetNodePassword[nodeGroup:sqldb]:
   - resetingNodePassword
